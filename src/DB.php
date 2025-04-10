@@ -1,5 +1,5 @@
 <?php
-namespace userwebdevelop;
+namespace userwebdevelop\mediahandler;
 
 use Yii;
 use yii\db\Schema;

@@ -1,6 +1,6 @@
 <?php
 
-namespace userwebdevelop;
+namespace userwebdevelop\mediahandler;
 
 use common\models\Image;
 use Yii;
