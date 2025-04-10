@@ -1,5 +1,5 @@
 {
-  "name": "userwebdevelop/yii2-media-handler",
+  "name": "userwebdevelop/media-handler",
   "description": "Trait для работы с изображениями и видео в Yii2-моделях",
   "type": "library",
   "license": "MIT",
