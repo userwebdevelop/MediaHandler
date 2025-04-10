@@ -1,16 +1,21 @@
 {
-  "name": "userwebdevelop/og-config-pages",
-  "description": "Функционал для OpenGraph-разметки",
+  "name": "userwebdevelop/yii2-media-handler",
+  "description": "Trait для работы с изображениями и видео в Yii2-моделях",
   "type": "library",
   "license": "MIT",
-  "autoload": {
-      "psr-4": {
-          "userwebdevelop\\": "src/"
-      }
-  },
   "require": {
     "php": ">=7.4",
-    "yiisoft/yii2": "^2.0"
+    "yiisoft/yii2": "^2.0",
+    "ext-fileinfo": "*"
   },
-  "minimum-stability": "dev"
+  "autoload": {
+    "psr-4": {
+      "userwebdevelop\\mediahandler\\": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-main": "1.0.x-dev"
+    }
+  }
 }
