@@ -25,5 +25,5 @@ public function afterSave($insert, $changedAttributes)
 # Команды
 
 Пакет предоставляет две команды:
-`uwb-media/create-table` - создаёт таблицу images для хранения и сортировки медиа файлов
-`uwb-media/drop-table` - удаляет таблицу images
+`php yii uwb-media/create-table` - создаёт таблицу images для хранения и сортировки медиа файлов
+`php yii uwb-media/drop-table` - удаляет таблицу images
