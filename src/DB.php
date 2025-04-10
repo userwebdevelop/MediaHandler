@@ -1,10 +1,11 @@
 <?php
+
 namespace userwebdevelop\mediahandler;
 
 use Yii;
 use yii\db\Schema;
 
-class DB
+class DB extends \yii\console\Controller
 {
     public function actionCreateTable()
     {
@@ -20,6 +21,9 @@ class DB
                 'sort' => Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 500',
                 'created_at' => Schema::TYPE_TIMESTAMP . ' DEFAULT CURRENT_TIMESTAMP',
             ])->execute();
+            echo "Таблица images успешно создана";
+        } else {
+            echo "Таблица images уже существует";
         }
     }
 
@@ -29,6 +33,9 @@ class DB
         $tableName = '{{%images}}';
         if (in_array($db->schema->getRawTableName($tableName), $db->schema->getTableNames())) {
             $db->createCommand()->dropTable($tableName)->execute();
+            echo "Таблица images успешно удалена";
+        } else {
+            echo "Таблица images не существует";
         }
     }
 }
