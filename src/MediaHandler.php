@@ -15,6 +15,7 @@ trait MediaHandler
     private $images;
     private $imageFile;
     private $videoFile;
+    private $soundFile;
     private $class;
     private $uploadPath;
 
@@ -40,6 +41,7 @@ trait MediaHandler
     {
         if (in_array('image', $this->fields())) $this->prepareMediaBeforeSave('image');
         if (in_array('video', $this->fields())) $this->prepareMediaBeforeSave('video');
+        if (in_array('sound', $this->fields())) $this->prepareMediaBeforeSave('sound');
         if ($this->images_to_delete) $this->deleteImages();
     }
     public function afterSave($insert, $changedAttributes)
@@ -177,5 +179,18 @@ trait MediaHandler
 
         return in_array(strtolower($file->extension), $allowedExtensions) &&
             in_array($mimeType, $allowedMimeTypes);
+    }
+    private function validateSound($file)
+    {
+        $allowedExtensions = ['mp3', 'wav', 'ogg', 'm4a', 'flac'];
+        $allowedMimeTypes = [
+            'audio/mpeg',
+            'audio/wav',
+            'audio/ogg',
+            'audio/mp4',
+            'audio/flac'
+        ];
+
+        return $this->validateFile($file, $allowedExtensions, $allowedMimeTypes);
     }
 }
