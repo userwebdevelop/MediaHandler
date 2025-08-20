@@ -51,7 +51,7 @@ document.body.insertAdjacentHTML("beforeend", `
                     </button>
                 </div>
                 <div class="modal-body">
-                    Вы уверены, что хотите удалить это изображение?
+                    Вы уверены, что хотите удалить этот объект?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
@@ -84,14 +84,14 @@ function deleteImage(image) {
 
     input.value = JSON.stringify(imagesToDelete);
 
-    document.querySelectorAll(`.single-image[data-name="${name}"]`).forEach(img => {
+    document.querySelectorAll(`.single-media--js[data-name="${name}"]`).forEach(img => {
         img.style.opacity = imagesToDelete[field]?.includes(name) ? "0.3" : "1";
         img.querySelector('.delete-image-btn').innerText = imagesToDelete[field]?.includes(name) ? 'Отмена' : '×';
     });
 }
-document.querySelectorAll('.single-image').forEach(image => {
+document.querySelectorAll('.single-media--js').forEach(image => {
     image.addEventListener('click', event => {
-        let button = event.target.closest('.delete-image-btn');
+        const button = event.target.closest('.delete-image-btn');
         if (!button) return;
         event.preventDefault();
 

@@ -9,11 +9,11 @@ use yii\web\AssetBundle;
  */
 class MediaHandlerAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/userwebdevelop/media-handler/assets';
+    public $sourcePath = '@vendor/userwebdevelop/media-handler/src/assets';
     public $css = [
-        '/css/many-images-field.css',
+        'css/many-images-field.css',
     ];
     public $js = [
-        '/js/many-images-field.js',
+        'js/many-images-field.js',
     ];
 }
