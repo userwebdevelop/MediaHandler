@@ -23,6 +23,8 @@ public function afterSave($insert, $changedAttributes)
 
 ## Установка и настройка
 
+выполнить команду `composer require userwebdevelop/media-handler`
+
 После установки пакета необходимо выполнить следующие шаги (порядок не важен):
 
 В файле `console/config/main.php` добавить:
@@ -33,7 +35,10 @@ public function afterSave($insert, $changedAttributes)
     'uwb-media' => 'userwebdevelop\mediahandler\DB',
 ];
 ```
-
+В файле `backend\views\layouts\main.php` добавить:
+```php
+\userwebdevelop\mediahandler\assets\MediaHandlerAsset::register($this);
+```
 ---
 
 ## Примеры использования в админке
@@ -79,25 +84,3 @@ public function afterSave($insert, $changedAttributes)
 
 * `php yii uwb-media/create-table` — создаёт таблицу `images` для хранения и сортировки медиафайлов
 * `php yii uwb-media/drop-table` — удаляет таблицу `images`
-
----
-
-## Сравнение с рендерером
-
-### Что совпадает:
-
-* Поддержка **одиночного изображения** (`getImageHTML`)
-* Поддержка **галереи изображений** (`getGalleryHTML`)
-* Поддержка **аудио** (`getSoundHTML`)
-* Поддержка **видео** (`getVideoHTML`)
-* Методы для интеграции с GridView (`getImageField`, `getImagesField`, `getSoundField`, `getVideoField`)
-
-### Чего не хватает в рендерере:
-
-* Логики обработки файлов при `beforeSave` и `afterSave` (это делает трейд).
-* Управления удалением и сортировкой (рендерер только рисует HTML, а сам функционал реализует трейд + JS).
-* Консольных команд (`create-table`, `drop-table`) — это не в рендерере, а в пакете в целом.
-
-**Вывод:**
-Рендерер = чисто фронтовый помощник для отображения медиа.
-Трейт и консольные команды = серверная часть, которая хранит и обрабатывает файлы.
