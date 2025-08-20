@@ -2,7 +2,6 @@
 
 namespace userwebdevelop\mediahandler;
 
-use common\models\Image;
 use Yii;
 use yii\helpers\FileHelper;
 use yii\validators\Validator;

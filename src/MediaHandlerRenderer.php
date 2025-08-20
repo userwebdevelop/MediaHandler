@@ -64,9 +64,8 @@ class MediaHandlerRenderer
         return [
             'attribute' => 'images',
             'value' => function ($data) use ($className) {
-                $images = \common\models\Image::find()->where(['object_type' => $className, 'object_id' => $data->id])
+                $images = Image::find()->where(['object_type' => $className, 'object_id' => $data->id])
                     ->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC])->all();
-
                 return self::getGalleryHTML($images, false);
             },
             'format' => 'raw',
@@ -106,5 +105,34 @@ class MediaHandlerRenderer
     public static function getImageUrl($imageName)
     {
         return "/upload/$imageName";
+    }
+    public static function getVideoHTML($video, bool $isEdit = true, string $fieldName = "video"): string
+    {
+        $videoName = trim($video, "");
+        if (empty($videoName)) {
+            return "<div class='no-image'>Видео отсутствует</div>";
+        }
+        $editButton = $isEdit
+            ? "<button type='button' class='btn btn-danger btn-xs delete-image-btn' data-name='$videoName' data-field='$fieldName'>×</button>"
+            : '';
+        return "<div class='single-media single-video' data-name='$videoName' data-field='$fieldName' style='position: relative; display: inline-block;'>
+                <video width='100%' autoplay muted loop src=\"/upload/$videoName\" class='video-element rounded'></video>
+                $editButton
+            </div>";
+    }
+    public static function getVideoField($model = null)
+    {
+        if (isset($model)) {
+            $value = self::getVideoHTML($model->video, false);
+        } else {
+            $value = function ($data) {
+                return self::getVideoHTML($data->video, false);
+            };
+        }
+        return [
+            'attribute' => 'video',
+            'value' => $value,
+            'format' => 'raw',
+        ];
     }
 }

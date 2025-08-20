@@ -1,0 +1,63 @@
+#sortable-images {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+#sortable-images img {
+    cursor: move;
+}
+
+.ghost {
+    opacity: .4;
+}
+
+.image_to_sort {
+    background-size: cover;
+    background-position: center;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.single-image {
+    width: 120px;
+    height: 120px;
+    margin: 0 3px;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    position: relative;
+    border-radius: 8px;
+}
+
+.delete-image-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 9px;
+    line-height: 0.9 !important;
+    border-radius: 20px !important;
+    z-index: 10;
+}
+
+.delete-audio-btn {
+    top: auto;
+    right: auto;
+}
+
+.no-image {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    padding: 10px;
+}
